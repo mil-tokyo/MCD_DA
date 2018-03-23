@@ -1,5 +1,6 @@
 # Maximum Classifier Discrepancy for Domain Adaptation with Semantic Segmentation Implemented by PyTorch
 <img src='../imgs/result_seg.png' align="center" width=800>
+
 ## Installation
 Use **Python 2.x**
 
