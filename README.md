@@ -1,4 +1,4 @@
-# Maximum Classifier Discrepancy for Domain Adaptation
+## Maximum Classifier Discrepancy for Domain Adaptation
 
 ![](docs/overview.png)
 <br>
