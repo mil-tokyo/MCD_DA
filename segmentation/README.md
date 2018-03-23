@@ -2,6 +2,7 @@
 
 <img src='../docs/result_seg.png' align="left" width=800>
 
+
 ## Installation
 Use **Python 2.x**
 
