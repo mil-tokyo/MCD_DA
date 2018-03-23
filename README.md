@@ -1,8 +1,9 @@
+<img src='imgs/overview.png' align="left" width=900>
+
 # Maximum Classifier Discrepancy for Domain Adaptation
 This is the implementation of Maximum Classifier Discrepancy for digits classification and semantic segmentation in Pytorch.
 The code is written by Kuniaki Saito. The work was accepted by CVPR 2018 Oral.
 #### Maximum Classifier Discrepancy for Domain Adaptation: [[Project]]() [[Paper (arxiv)]]().
-<img src='imgs/overview.png' align="right" width=384>
 
 ## Getting Started
 ### Installation
