@@ -1,15 +1,10 @@
-<img src='imgs/fig2.png' align="right" width=384>
-
-# Maximum Classifier Discrepancy for Domain Adaptation
+## Maximum Classifier Discrepancy for Domain Adaptation
 This is the implementation of Maximum Classifier Discrepancy for Digits Classification in Pytorch.
 The code is written by Kuniaki Saito. The work was accepted by CVPR 2018 Oral.
-#### Maximum Classifier Discrepancy for Domain Adaptation: [[Project]]() [[Paper (arxiv)]]().
-<img src='imgs/picture_adr.png' width=900>
 
 ## Getting Started
 ### Installation
 - Install PyTorch (Works on Version 0.2.0_3) and dependencies from http://pytorch.org.
-- Due to the change of calculation of kl divergence, it may not work for newer version.
 - Install Torch vision from the source.
 - Install torchnet as follows
 ```
@@ -21,19 +16,13 @@ Place it in the directory ./data.
 SVHN Dataset and place it in !.
 USPS dataset and place it in ~.
 
-### ADR train/evaluation
+### Train
 For example, if you run an experiment on adaptation from svhn to mnist,
 ```
 python main.py --source svhn --target mnist --num_k 3
 ```
 , where num_k indicates the number of update for generator.
 If you want to run an experiment using gradient reversal layer, simply add option --one_step when running this code.
-
-## Citation
-If you use this code for your research, please cite our papers.
 ```
-
-
+python main.py --source svhn --target mnist --one_step
 ```
-
-
