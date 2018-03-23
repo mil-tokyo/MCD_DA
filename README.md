@@ -1,4 +1,4 @@
-<img src='imgs/overview.png' align="left" width=800>
+<img src='imgs/overview.png' align="center" width=800>
 
 # Maximum Classifier Discrepancy for Domain Adaptation
 This is the implementation of Maximum Classifier Discrepancy for digits classification and semantic segmentation in Pytorch.
