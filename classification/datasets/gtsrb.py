@@ -2,7 +2,7 @@ import numpy as np
 import cPickle as pkl
 
 def load_gtsrb():
-    data_target = pkl.load(open('/data/ugui0/ksaito/D_A/GTSRB/Final_Training/data_gtsrb'))
+    data_target = pkl.load(open('./data/data_gtsrb'))
     target_train = np.random.permutation(len(data_target['image']))
     data_t_im = data_target['image'][target_train[:31367], :, :, :]
     data_t_im_test = data_target['image'][target_train[31367:], :, :, :]

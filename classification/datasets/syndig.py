@@ -6,8 +6,8 @@ from utils.utils import dense_to_one_hot
 
 
 def load_syndig():
-    synth_train = loadmat('/data/ugui0/ksaito/D_A/Synth/synth_train_32x32.mat')
-    synth_test = loadmat('/data/ugui0/ksaito/D_A/Synth/synth_test_32x32.mat')
+    synth_train = loadmat('data/synth_train_32x32.mat')
+    synth_test = loadmat('data/synth_test_32x32.mat')
     synth_train_im = synth_train['X']
     synth_train_im = synth_train_im.astype(np.float32)
     synth_train_im = synth_train_im.transpose(3, 0, 1, 2)
