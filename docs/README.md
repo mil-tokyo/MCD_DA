@@ -1,4 +1,3 @@
-## Maximum Classifier Discrepancy for Unsupervised Domain Adaptation
 
 ![](overview.png)
 <br>
