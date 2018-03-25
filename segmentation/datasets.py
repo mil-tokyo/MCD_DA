@@ -11,6 +11,7 @@ from torch.utils import data
 
 from transform import HorizontalFlip, VerticalFlip
 
+
 class ConcatDataset(torch.utils.data.Dataset):
     def __init__(self, *datasets):
         self.datasets = datasets
@@ -25,11 +26,10 @@ class ConcatDataset(torch.utils.data.Dataset):
 def default_loader(path):
     return Image.open(path)
 
+
 class CityDataSet(data.Dataset):
-    def __init__(self, root, split="train", img_transform=None, label_transform=None, test=True, input_ch=3,
+    def __init__(self, root, split="train", img_transform=None, label_transform=None, test=True,
                  label_type=None):
-        assert input_ch in [1, 3, 4]
-        self.input_ch = input_ch
         self.root = root
         self.split = split
         # self.mean_bgr = np.array([104.00698793, 116.66876762, 122.67891434])
@@ -64,14 +64,6 @@ class CityDataSet(data.Dataset):
 
         img_file = datafiles["img"]
         img = Image.open(img_file).convert('RGB')
-        np3ch = np.array(img)
-        if self.input_ch == 1:
-            img = ImageOps.grayscale(img)
-
-        elif self.input_ch == 4:
-            extended_np3ch = np.concatenate([np3ch, np3ch[:, :, 0:1]], axis=2)
-            img = Image.fromarray(np.uint8(extended_np3ch))
-
         label_file = datafiles["label"]
         label = Image.open(label_file).convert("P")
 
@@ -92,7 +84,7 @@ class GTADataSet(data.Dataset):
                  test=False, input_ch=3):
         # Note; split "train" and "images" are SAME!!!
 
-        assert split in ["images", "test", "train", "fewshot"]
+        assert split in ["images", "test", "train"]
 
         assert input_ch in [1, 3, 4]
         self.input_ch = input_ch
@@ -184,14 +176,6 @@ class SynthiaDataSet(data.Dataset):
         datafiles = self.files[self.split][index]
         img_file = datafiles["rgb"]
         img = Image.open(img_file).convert('RGB')
-        np3ch = np.array(img)
-        if self.input_ch == 1:
-            img = ImageOps.grayscale(img)
-
-        elif self.input_ch == 4:
-            extended_np3ch = np.concatenate([np3ch, np3ch[:, :, 0:1]], axis=2)
-            img = Image.fromarray(np.uint8(extended_np3ch))
-
         label_file = datafiles["label"]
         label = Image.open(label_file).convert("P")
 
@@ -253,15 +237,14 @@ def get_dataset(dataset_name, split, img_transform, label_transform, test, input
         "gta": GTADataSet,
         "city": CityDataSet,
         "city16": CityDataSet,
-        "test": TestDataSet,
         "synthia": SynthiaDataSet,
     }
+    ##Note fill in the blank below !! "gta....fill the directory over images folder.
     name2root = {
-        "gta": "/data/ugui0/dataset/adaptation/taskcv-2017-public/segmentation/data/",
-        "city": "/data/ugui0/ksaito/D_A/image_citiscape/www.cityscapes-dataset.com/file-handling/",
-        "city16": "/data/ugui0/ksaito/D_A/image_citiscape/www.cityscapes-dataset.com/file-handling/",
-        "test": "/data/ugui0/dataset/adaptation/segmentation_test",
-        "synthia": "/data/ugui0/dataset/adaptation/synthia/RAND_CITYSCAPES",
+        "gta": "",  ## Fill the directory over images folder. put train.txt, val.txt in this folder
+        "city": "",  ## ex, ./www.cityscapes-dataset.com/file-handling
+        "city16": "",  ## Same as city
+        "synthia": "",  ## synthia/RAND_CITYSCAPES",
     }
     dataset_obj = name2obj[dataset_name]
     root = name2root[dataset_name]
