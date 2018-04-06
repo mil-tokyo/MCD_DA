@@ -13,8 +13,9 @@ pip install git+https://github.com/pytorch/tnt.git@master
 ## Download Dataset
 Download MNIST Dataset [here](https://drive.google.com/file/d/1cZ4vSIS-IKoyKWPfcgxFMugw0LtMiqPf/view?usp=sharing). Resized image dataset is contained in the file.
 Place it in the directory ./data.
-SVHN Dataset and place it in !.
-USPS dataset and place it in ~.
+All other datasets should be placed in the directory too.
+We will add links to the datasets too.
+
 
 ### Train
 For example, if you run an experiment on adaptation from svhn to mnist,
