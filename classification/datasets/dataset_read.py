@@ -6,8 +6,7 @@ from svhn import load_svhn
 from mnist import load_mnist
 from usps import load_usps
 from gtsrb import load_gtsrb
-from synth import load_synth
-from syndig import load_syndig
+from synth_traffic import load_syntraffic
 
 
 def return_dataset(data, scale=False, usps=False, all_use='no'):
@@ -23,7 +22,7 @@ def return_dataset(data, scale=False, usps=False, all_use='no'):
         test_image, test_label = load_usps(all_use=all_use)
     if data == 'synth':
         train_image, train_label, \
-        test_image, test_label = load_synth()
+        test_image, test_label = load_syntraffic()
     if data == 'gtsrb':
         train_image, train_label, \
         test_image, test_label = load_gtsrb()
