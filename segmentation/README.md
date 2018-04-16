@@ -14,22 +14,26 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-### Train
-For validation data
+### Training
+- Dataset
+    - Source: GTA5 (gta), Target: Cityscapes (city)
+- Network
+    - Dilated Residual Network (drn_d_105)
+
+We train the model following the assumptions above;
 ```
 python adapt_trainer.py gta city --net drn_d_105
 ```
-
+Trained models will be saved as "./train_output/gta-train2city-train_3ch/pth/normal-drn_d_105-res50-EPOCH.pth.tar"
 
 ### Test
-For validation data
 ```
-python adapt_tester.py city ./pth/hogehoge.pth.tar
+python adapt_tester.py city ./train_output/gta-train2city-train_3ch/pth/normal-drn_d_105-res50-EPOCH.pth.tar
 ```
 
+Results will be saved under "./test_output/gta-train2city-train_3ch---city-val/normal-drn_d_105-res50-EPOCH.tar"
 
-Results will be saved under "./outputs/hogehoge/".
-
+<!-- 
 #### CRF postprocessing
 To use crf.py, you need to install pydensecrf. (https://github.com/lucasb-eyer/pydensecrf)
 
@@ -53,10 +57,6 @@ Optionally you can use raw img as follows;
 ```
 python crf.py outputs/spatial-adapt-g-0.001000-7/prob  outputs/spatial-adapt-g-0.001000-7/label_crf_rawimg --raw_img_indir /data/unagi0/watanabe/DomainAdaptation/Segmentation/VisDA2017/cityscapes_val_imgs
 ```
-Raw image paths are below;
-- valid: '/data/unagi0/watanabe/DomainAdaptation/Segmentation/VisDA2017/cityscapes_val_imgs'
-- test: '/data/ugui0/dataset/adaptation/segmentation_test'
-
 
 #### Visualize with Legend
 After you ran adapt_tester, you can apply visualization_with_legend as follows;
@@ -66,10 +66,12 @@ python visualize_result.py --indir_list outputs/loss-weighted152-test-g-0.001000
 ![](_static/vis_with_legend.png)
 
 Results will be saved under "./outputs/YOUR_MODEL_NAME/vis_with_legend".
+-->
 
-### Evaluation for Validation Data
+
+### Evaluation
 ```
-python eval.py city ./outputs/YOUR_MODEL_NAME/label
+python eval.py city ./test_output/gta-train2city-train_3ch---city-val/normal-drn_d_105-res50-EPOCH.tar/label
 ```
 
 ## Reference codes
