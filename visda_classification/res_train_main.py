@@ -40,9 +40,9 @@ parser.add_argument('--name', type=str, default='board', metavar='B',
                     help='board dir')
 parser.add_argument('--save', type=str, default='save/mcd', metavar='B',
                     help='board dir')
-parser.add_argument('--train_path', type=str, default='/data/ugui0/dataset/adaptation/train', metavar='B',
+parser.add_argument('--train_path', type=str, default='', metavar='B',
                     help='directory of source datasets')
-parser.add_argument('--val_path', type=str, default='/data/ugui0/dataset/adaptation/validation', metavar='B',
+parser.add_argument('--val_path', type=str, default='', metavar='B',
                     help='directory of target datasets')
 parser.add_argument('--resnet', type=str, default='101', metavar='B',
                     help='which resnet 18,50,101,152,200')
