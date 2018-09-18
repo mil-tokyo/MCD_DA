@@ -52,24 +52,41 @@ def get_common_training_parser(parser):
                         help='momentum sgd (default: 0.9)')
     parser.add_argument('--weight_decay', type=float, default=2e-5,
                         help='weight_decay (default: 2e-5)')
-    parser.add_argument('--batch_size', type=int, default=1,
+    parser.add_argument('-b', '--batch_size', type=int, default=1,
                         help="batch_size")
-
+    parser.add_argument("--normalize_way", type=str, default="imagenet", choices=["imagenet", "None"],
+                        help="normalize way")
+    
     # ---------- Optional Hyperparameters ---------- #
-    parser.add_argument('--augment', action="store_true",
-                        help='whether you use data-augmentation or not')
-
-    # ---------- Input Image Setting ---------- #
+    # parser.add_argument('--augment', action="store_true",
+    #                     help='whether you use data-augmentation or not')
+    parser.add_argument('--crop_size', type=int, default=-1,
+                        help='crop size (default: -1): 512 is good for cityscapes')
+    # 512 is derived from https://github.com/mitmul/chainer-pspnet/blob/05545d5ed254ec557697442cf98b1a2c5135216a/datasets/cityscapes/cityscapes_transformed.py#L13
+    parser.add_argument('--rotate_angle', type=int, default=0,
+                        help='crop size (default: -1): lower than 10 is good(?)')
+    
+    parser.add_argument('--loss_weights_file', type=str, default=None,
+                        help='Use this when you control the loss per class')
+    parser.add_argument("--add_bg_loss", action="store_true",
+                        help='whether you add background loss or not')
+    parser.add_argument("--fix_bn", action="store_true",
+                        help='whether you fix the paramters of batch normalization layer')
+    parser.add_argument("--no_dropout", action="store_true",
+                        help='whether you use dropout')
+    
+    # ---------- Input Information Setting ---------- #
     parser.add_argument("--input_ch", type=int, default=3,
                         choices=[1, 3, 4])
     parser.add_argument('--train_img_shape', default=(1024, 512), nargs=2, metavar=("W", "H"),
                         help="W H")
-
+    parser.add_argument("--background_id", type=int, default=255,
+                        help="background id")
+    
     # ---------- Whether to Resume ---------- #
     parser.add_argument("--resume", type=str, default=None, metavar="PTH.TAR",
                         help="model(pth) path")
     return parser
-
 
 def get_src_only_training_parser(parser=None):
     if parser is None:
