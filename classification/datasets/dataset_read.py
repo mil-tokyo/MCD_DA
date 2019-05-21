@@ -50,9 +50,8 @@ def dataset_read(source, target, batch_size, scale=False, all_use='no'):
     T['imgs'] = train_target
     T['labels'] = t_label_train
 
-    # input target samples for both 
-    S_test['imgs'] = test_target
-    S_test['labels'] = t_label_test
+    S_test['imgs'] = test_source
+    S_test['labels'] = s_label_test
     T_test['imgs'] = test_target
     T_test['labels'] = t_label_test
     scale = 40 if source == 'synth' else 28 if source == 'usps' or target == 'usps' else 32
