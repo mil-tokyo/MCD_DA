@@ -82,4 +82,4 @@ class CVDataLoader(object):
         return self.paired_data
 
     def __len__(self):
-        return min(max(len(self.dataset_A), len(self.dataset_B)), self.opt.max_dataset_size)
+        return min(max(len(self.dataset_A), len(self.dataset_B)), self.max_dataset_size)
