@@ -1,7 +1,7 @@
-import svhn2mnist
-import usps
-import syn2gtrsb
-import syndig2svhn
+from model import svhn2mnist
+from model import usps
+from model import syn2gtrsb
+from model import syndig2svhn
 
 def Generator(source, target, pixelda=False):
     if source == 'usps' or target == 'usps':
